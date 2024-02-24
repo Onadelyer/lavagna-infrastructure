@@ -28,12 +28,9 @@ spec:
             - name: POSTGRES_DB
               value: lavagna
             - name: POSTGRES_USER
-              value: "${DB_USER}"
+              value: "myuser"
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-password
-                  key: password
+              value: "mypassword"
           ports:
             - containerPort: 5432
           volumeMounts:

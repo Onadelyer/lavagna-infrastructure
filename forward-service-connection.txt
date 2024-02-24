@@ -1,0 +1,1 @@
+minikube kubectl -- port-forward --address 0.0.0.0 svc/<SERVICE_NAME> <EXTERNAL_PORT>:<SERVICE_PORT>
