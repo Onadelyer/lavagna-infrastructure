@@ -3,6 +3,9 @@ kind: PersistentVolume
 metadata:
   name: nfs-main
 spec:
+  selector:
+    matchLabels:
+      environment: main
   capacity:
     storage: 3Gi
   accessModes:
@@ -17,6 +20,9 @@ kind: PersistentVolume
 metadata:
   name: nfs-dev
 spec:
+  selector:
+    matchLabels:
+      environment: dev
   capacity:
     storage: 3Gi
   accessModes:
@@ -31,6 +37,9 @@ kind: PersistentVolume
 metadata:
   name: nfs-qa
 spec:
+  selector:
+    matchLabels:
+      environment: qa
   capacity:
     storage: 3Gi
   accessModes:
