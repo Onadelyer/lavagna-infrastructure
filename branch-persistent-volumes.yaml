@@ -8,7 +8,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
   nfs:
     path: /nfs/kubedata/main
     server: 10.26.0.83
@@ -23,7 +22,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
   nfs:
     path: /nfs/kubedata/dev
     server: 10.26.0.83
@@ -38,7 +36,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
   nfs:
     path: /nfs/kubedata/qa
     server: 10.26.0.83
