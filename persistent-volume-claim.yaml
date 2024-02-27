@@ -11,3 +11,32 @@ spec:
   selector:
     matchLabels:
       environment: main
+
+
+minikube kubectl -- apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-long-lived-secret
+  namespace: jenkins  # Replace 'your-custom-namespace' with the name of your custom namespace
+  annotations:
+    kubernetes.io/service-account.name: jenkins
+type: kubernetes.io/service-account-token
+EOF
+
+minikube kubectl -- describe secret $(minikube kubectl -- describe serviceaccount jenkins --namespace=jenkins | grep Token | awk '{print $2}') --namespace=jenkins
+
+[kubernetes@localhost root]$ minikube kubectl -- describe secret $(minikube kubectl -- describe serviceaccount jenkins --namespace=jenkins | grep Token | awk '{print $2}') --namespace=jenkins
+Name:         my-long-lived-secret
+Namespace:    jenkins
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name: jenkins
+              kubernetes.io/service-account.uid: 2f513ac0-430a-4a61-803b-6eb2e135807c
+
+Type:  kubernetes.io/service-account-token
+
+Data
+====
+ca.crt:     1111 bytes
+namespace:  7 bytes
+token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IjgybnBET3dablJYaG10aV9CMG15clhYWW8xOUg3ZE5MX2plVXh3Nmo0cDAifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJqZW5raW5zIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6Im15LWxvbmctbGl2ZWQtc2VjcmV0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImplbmtpbnMiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIyZjUxM2FjMC00MzBhLTRhNjEtODAzYi02ZWIyZTEzNTgwN2MiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6amVua2luczpqZW5raW5zIn0.q6ru5_3oWgIc3S4gm1V4iq1pN1yFvUSIyYbjpkfamh2Z1sirpZWUJBMuI5o_XEb_NSrxRI_9PR-8y33mYJa_oV1e8wLby3vSShux3jyHL6VzXWsWUSrGnd--PZ42WJ4g_963cP6wWffmgGb5n1qWeH7OlgFcoKaqLVqNC8zb_11WRkmTi37ax8gPN-B4O9OmNv5RSAChhqLE5C7yz9PNKxS3zuTbsYDXm2H9MRkKKmT6CMV5ZcBQUt0cZr8BZBsRXJHrrfI6wuz4aqTpPxYwG9LgFFKMC_zDGc3IzqQgYafCoJstYDqNVUYYwLE_YiXhnBlGsHpBA2SBJyDg1ksKRA
