@@ -196,6 +196,7 @@ spec:
             - containerPort: 8443
               protocol: TCP
           args:
+            - --auto-generate-certificates
             - --enable-skip-login
             - --disable-settings-authorizer
             - --enable-insecure-login
