@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: vault
-          image: vault:1.10.0  # Use the latest version of Vault
+          image: vault:1.10.0
           args: ["server", "-dev"]
           env:
             - name: VAULT_DEV_ROOT_TOKEN_ID

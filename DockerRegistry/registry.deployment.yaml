@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: registry
-        image: registry:2  # Using the official Docker registry image
+        image: registry:2
         ports:
         - containerPort: 5000
         volumeMounts:
@@ -23,4 +23,5 @@ spec:
           mountPath: /var/lib/registry
       volumes:
       - name: registry-storage
-        emptyDir: {}  # This is for demonstration. For production, consider using a PersistentVolumeClaim
+        persistentVolumeClaim:
+          claimName: registry-storage
