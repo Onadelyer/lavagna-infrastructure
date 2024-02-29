@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: registry
-        image: registry:2
+        image: registry:latest
         ports:
         - containerPort: 5000
         volumeMounts:
