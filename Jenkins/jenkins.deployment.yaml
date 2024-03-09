@@ -20,13 +20,6 @@ spec:
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
-          resources:
-            limits:
-              memory: "8Gi"
-              cpu: "6000m"
-            requests:
-              memory: "4Gi"
-              cpu: "3000m"
           ports:
             - name: httpport
               containerPort: 8080
