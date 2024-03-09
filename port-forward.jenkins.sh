@@ -1,1 +1,0 @@
-minikube kubectl -- port-forward service/jenkins --address 0.0.0.0 -n jenkins 8300:8080

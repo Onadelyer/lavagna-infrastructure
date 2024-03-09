@@ -5,4 +5,4 @@ minikube kubectl -- apply -f jenkins.token.yaml
 minikube kubectl -- apply -f jenkins.service.yaml
 minikube kubectl -- apply -f jenkins.deployment.yaml
 minikube kubectl -- apply -f docker-registry.external-name.yaml
-minikube kubeclt -- apply -f vault.external-name.yaml
+minikube kubectl -- apply -f vault.external-name.yaml
