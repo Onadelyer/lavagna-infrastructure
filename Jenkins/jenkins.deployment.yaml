@@ -37,5 +37,5 @@ spec:
               mountPath: /var/jenkins_home
       volumes:
         - name: jenkins-data
-          persistentVolume:
-              name: jenkins-pv
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
